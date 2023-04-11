@@ -1,13 +1,14 @@
 #include "stdafx.h"
 #include "MainScene.h"
+#include "GameScene.h"
 
 MainScene::MainScene() {
-	icon = new Sprite(L"Resources/Images/icon.png");
-	AddObject(icon);
+	icon = new Sprite(L"Resources/Images/MainScene/mainScene.jpg");
 	icon->setPos(0, 0);
-	
 	icon->setRotationCenter(icon->getWidth() / 2, icon->getHeight() / 2);
-	icon->setScale(0.5f, 0.5f);
+	AddObject(icon);
+
+	soundManager->LoadAudioFromFile(L"Resources/Sounds/BackgroundSound.wav");
 }
 
 MainScene::~MainScene() {
@@ -15,11 +16,14 @@ MainScene::~MainScene() {
 }
 
 void MainScene::Render() {
-	icon->Render();
+	Scene::Render();
 }
 
 void MainScene::Update(float dTime) {
 	Scene::Update(dTime);
-	if(inputManager->GetKeyState('A') == KEY_ON)
-		icon->setRotation(icon->getRotation() + dTime * 100);
+	icon->setRotation(180);
+
+	if (inputManager->GetKeyState(VK_SPACE) == KEY_DOWN) {
+		sceneManager->ChangeScene(new GameScene());
+	}
 }

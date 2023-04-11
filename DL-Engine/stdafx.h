@@ -6,16 +6,18 @@
 #define SCREEN_HEIGHT 768
 #define PROGRAM_NAME TEXT("Engine")
 #define CONSOLE_NAME TEXT("Console")
-#define IS_FULL_SCREEN false
+#define IS_FULL_SCREEN true
 
 //라이브러리
 #pragma comment (lib,"WindowsCodecs.lib")
+#pragma comment(lib, "winmm.lib")
 #pragma comment (lib,"d2d1.lib")
 #pragma comment (lib,"dwrite.lib")
 
 //윈도우 헤더
 #include <Windows.h>
 #include <wincodec.h>
+#include <xaudio2.h>
 
 //다이렉트X 헤더
 #include <d2d1.h>
@@ -36,6 +38,7 @@
 #include "TextureManager.h"
 #include "SceneManager.h"
 #include "InputManager.h"
+#include "SoundManager.h"
 
 //상수 및 매크로 함수
 #define KEY_NONE 0
@@ -55,3 +58,4 @@ extern HWND hWnd;
 extern SceneManager* sceneManager;
 extern TextureManager* textureManager;
 extern InputManager* inputManager;
+extern SoundManager* soundManager;

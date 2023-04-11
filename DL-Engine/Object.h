@@ -19,6 +19,8 @@ protected:
 
 	std::list<Object*> childList;
 
+	std::string tag;
+
 public:
 	Object();
 	~Object();
@@ -40,12 +42,15 @@ public:
 	float getPosY();
 	float getRotation();
 
+	std::string getTag();
+
 	void setParent(Object* parent);
 	void setPos(D2D_POINT_2F pos);
 	void setScale(D2D_POINT_2F scale);
 	void setScalingCenter(D2D_POINT_2F scaleCenter);
 	void setRotation(float rotation);
 	void setRotationCenter(D2D_POINT_2F rotationCenter);
+	void setTag(std::string tag);
 
 	template<typename PX, typename PY>
 	void setPos(PX posX, PY posY) {

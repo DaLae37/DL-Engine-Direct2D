@@ -9,12 +9,13 @@ HWND hWnd;
 SceneManager* sceneManager;
 TextureManager* textureManager;
 InputManager* inputManager;
+SoundManager* soundManager;
 
 Application::Application(HINSTANCE hInstance, INT cmdShow) {
 	InitWindow(hInstance);
 	FloatWindow(hInstance, cmdShow);
-	InitDirect2D();
 
+	InitDirect2D();
 	InitDeltaTime();
 	InitManager();
 
@@ -67,8 +68,8 @@ HRESULT Application::CreateDeviceResources() {
 			size = D2D1::SizeU(SCREEN_WIDTH, SCREEN_HEIGHT);
 		}
 
-		hr = factory->CreateHwndRenderTarget(D2D1::RenderTargetProperties(), D2D1::HwndRenderTargetProperties(hWnd, size), &renderTarget);
-
+		hr = factory->CreateHwndRenderTarget(D2D1::RenderTargetProperties(), D2D1::HwndRenderTargetProperties(hWnd, size, D2D1_PRESENT_OPTIONS_IMMEDIATELY), &renderTarget);
+		
 		return hr;
 	}
 }
@@ -95,6 +96,7 @@ void Application::InitManager() {
 	sceneManager = new SceneManager();
 	textureManager = new TextureManager();
 	inputManager = new InputManager();
+	soundManager = new SoundManager();
 }
 
 void Application::InitDeltaTime() {
@@ -133,6 +135,36 @@ int Application::DoMainLoop(Scene* firstScene) {
 			DispatchMessage(&Message);
 		}
 
+		if (inputManager->GetKeyState('A') == KEY_DOWN) {
+			DWORD dwStyle = GetWindowLong(hWnd, GWL_STYLE);
+			WINDOWPLACEMENT m_wpPrev;
+			if (dwStyle & WS_OVERLAPPEDWINDOW)
+			{
+
+				m_wpPrev.length = sizeof(WINDOWPLACEMENT);
+				MONITORINFO mi = { sizeof(MONITORINFO) };
+				if (GetWindowPlacement(hWnd, &m_wpPrev) &&
+					GetMonitorInfo(MonitorFromWindow(hWnd, MONITOR_DEFAULTTOPRIMARY), &mi))
+				{
+					SetWindowLong(hWnd, GWL_STYLE,
+						dwStyle & ~WS_OVERLAPPEDWINDOW);
+					SetWindowPos(hWnd, HWND_TOP,
+						mi.rcMonitor.left, mi.rcMonitor.top,
+						mi.rcMonitor.right - mi.rcMonitor.left,
+						mi.rcMonitor.bottom - mi.rcMonitor.top,
+						SWP_NOOWNERZORDER | SWP_FRAMECHANGED);
+				}
+			}
+			else
+			{
+				SetWindowLong(hWnd, GWL_STYLE, dwStyle | WS_OVERLAPPEDWINDOW);
+				SetWindowPlacement(hWnd, &m_wpPrev);
+				SetWindowPos(hWnd, NULL, 0, 0, 0, 0,
+					SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER |
+					SWP_NOOWNERZORDER | SWP_FRAMECHANGED);
+			}
+		}
+
 		D2D_MATRIX_3X2_F identity = { 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f };
 		D2D_COLOR_F backgroundColor = { 1.0f, 1.0f, 1.0f, 1.0f };
 		renderTarget->BeginDraw();
@@ -157,6 +189,7 @@ void Application::DeleteManager() {
 	SAFE_DELETE(sceneManager);
 	SAFE_DELETE(textureManager);
 	SAFE_DELETE(inputManager);
+	SAFE_DELETE(soundManager);
 }
 
 void Application::ReleaseDirect2D() {
@@ -168,10 +201,8 @@ void Application::ReleaseDirect2D() {
 float Application::getDeltaTime() {
 	QueryPerformanceCounter(&currentInterval);
 
-	LONGLONG interval = (currentInterval.QuadPart
-		- beforeInterval.QuadPart);
-	float dTime = (float)interval / 
-		(float)Frequency.QuadPart;
+	LONGLONG interval = (currentInterval.QuadPart - beforeInterval.QuadPart);
+	float dTime = (float)interval / (float)Frequency.QuadPart;
 	beforeInterval = currentInterval;
 
 	return dTime;

@@ -15,7 +15,13 @@ Scene::~Scene() {
 }
 
 void Scene::Render() {
-	
+	for (auto& object : objectList) {
+		object->Render();
+	}
+
+	for (auto& ui : uiList) {
+		ui->Render();
+	}
 }
 
 void Scene::Update(float dTime) {
