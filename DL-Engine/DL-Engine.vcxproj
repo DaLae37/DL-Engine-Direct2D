@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{cd8482b2-5d40-4a67-abb9-f532079ddec7}</ProjectGuid>
     <RootNamespace>DLEngine</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -147,10 +147,13 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Console.cpp" />
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainScene.cpp" />
+    <ClCompile Include="NetworkManager.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -169,9 +172,12 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="Console.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="FontManager.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="MainScene.h" />
+    <ClInclude Include="NetworkManager.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />

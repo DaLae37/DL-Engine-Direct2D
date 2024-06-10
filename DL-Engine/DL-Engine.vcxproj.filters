@@ -102,6 +102,15 @@
     <ClCompile Include="GameScene.cpp">
       <Filter>소스 파일\Game\GameScene</Filter>
     </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkManager.cpp">
+      <Filter>소스 파일\Framework\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="FontManager.cpp">
+      <Filter>소스 파일\Framework\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -145,6 +154,15 @@
     </ClInclude>
     <ClInclude Include="GameScene.h">
       <Filter>헤더 파일\Game\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>헤더 파일\Framework\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkManager.h">
+      <Filter>헤더 파일\Framework\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="FontManager.h">
+      <Filter>헤더 파일\Framework\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
