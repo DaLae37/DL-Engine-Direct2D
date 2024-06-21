@@ -6,6 +6,7 @@ class Scene
 private :
 	std::list<Object*> objectList;
 	std::list<Object*> uiList;
+	D2D_COLOR_F backgroundColor;
 public :
 	Scene();
 	~Scene();
@@ -18,4 +19,7 @@ public :
 
 	void AddUI(Object* ui);
 	void RemoveUI(Object* ui);
+
+	void setBackgroundColor(D2D_COLOR_F backgroundColor);
+	D2D_COLOR_F getBackgroundColor();
 };

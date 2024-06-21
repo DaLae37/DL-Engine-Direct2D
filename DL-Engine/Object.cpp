@@ -8,7 +8,7 @@ Object::Object() {
 	scalingCenter = D2D_POINT_2F{ 0, 0 };
 
 	rotation = 0;
-	scale = D2D_POINT_2F{ 1, 1 };
+	scale = D2D_POINT_2F{ 1.0f, 1.0f };
 
 	mat = D2D_MATRIX_3X2_F{ 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f};
 

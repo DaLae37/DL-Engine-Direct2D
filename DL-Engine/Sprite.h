@@ -17,7 +17,10 @@ public :
 
 	int getWidth();
 	int getHeight();
-	D2D_COLOR_F getColor();
 
+	D2D_COLOR_F getColor();
 	void setColor(D2D_COLOR_F color);
+
+	void SetOpacity(float opacity);
+	float GetOpacity();
 };

@@ -3,8 +3,9 @@
 #include "GameScene.h"
 
 MainScene::MainScene() {
+	SetBackgroundColor(Color::black);
 	icon = new Sprite(L"Resources/Images/MainScene/mainScene.jpg");
-	icon->setPos(0, 0);
+	icon->setPos(100, 0);
 	icon->setRotationCenter(icon->getWidth() / 2, icon->getHeight() / 2);
 	AddObject(icon);
 

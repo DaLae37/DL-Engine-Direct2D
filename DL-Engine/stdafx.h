@@ -59,3 +59,11 @@ extern SceneManager* sceneManager;
 extern TextureManager* textureManager;
 extern InputManager* inputManager;
 extern SoundManager* soundManager;
+
+//»ö»ó
+namespace Color {
+	const D2D_COLOR_F red = { 1.0f, 0.0f, 0.0f, 1.0f };
+	const D2D_COLOR_F green = { 0.0f, 1.0f, 0.0f, 1.0f };
+	const D2D_COLOR_F blue = { 0.0f, 0.0f, 1.0f, 1.0f };
+	const D2D_COLOR_F black = { 0.0f, 0.0f, 0.0f, 1.0f };
+}

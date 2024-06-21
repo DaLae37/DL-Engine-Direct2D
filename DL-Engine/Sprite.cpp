@@ -8,6 +8,12 @@ Sprite::Sprite(const wchar_t* path) {
 	width = textureSize.width;
 	height = textureSize.height;
 
+	rotationCenter.x = width / 2;
+	rotationCenter.y = height / 2;
+
+	scalingCenter.x = width / 2;
+	scalingCenter.y = height / 2;
+
 	visibleRect.left = 0;
 	visibleRect.top = 0;
 	visibleRect.right = width;
@@ -15,7 +21,7 @@ Sprite::Sprite(const wchar_t* path) {
 
 	rect = visibleRect;
 
-	color = D2D_COLOR_F{ 255, 255, 255, 255 };
+	color = D2D_COLOR_F{ 1.0f, 1.0f, 1.0f, 1.0f };
 }
 
 Sprite::~Sprite() {
@@ -24,10 +30,8 @@ Sprite::~Sprite() {
 
 void Sprite::Render() {
 	Object::Render();
-	D2D1_POINT_2F sca;
-	sca.x = width / 2;
-	sca.y = height / 2;
-	renderTarget->SetTransform(D2D1::Matrix3x2F::Translation(pos.x, pos.y) * D2D1::Matrix3x2F::Scale(scale.x, scale.y, sca) * D2D1::Matrix3x2F::Rotation(rotation, rotationCenter));
+	
+	renderTarget->SetTransform(D2D1::Matrix3x2F::Translation(pos.x, pos.y) * D2D1::Matrix3x2F::Scale(scale.x, scale.y, scalingCenter) * D2D1::Matrix3x2F::Rotation(rotation, rotationCenter));
 	renderTarget->DrawBitmap(texture, &rect, color.a, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, nullptr);
 }
 
@@ -45,4 +49,12 @@ D2D_COLOR_F Sprite::getColor() {
 
 void Sprite::setColor(D2D_COLOR_F color) {
 	this->color = color;
+}
+
+void Sprite::SetOpacity(float opacity) {
+	color.a = opacity;
+}
+
+float Sprite::GetOpacity() {
+	return color.a;
 }

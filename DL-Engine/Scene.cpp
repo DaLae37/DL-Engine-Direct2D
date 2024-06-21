@@ -2,7 +2,7 @@
 #include "Scene.h"
 
 Scene::Scene() {
-
+	backgroundColor = { 1.0f, 1.0f, 1.0f, 1.0f };
 }
 
 Scene::~Scene() {
@@ -50,4 +50,12 @@ void Scene::AddUI(Object* ui) {
 
 void Scene::RemoveUI(Object* ui) {
 	uiList.remove(ui);
+}
+
+void Scene::setBackgroundColor(D2D_COLOR_F backgroundColor) {
+	this->backgroundColor = backgroundColor;
+}
+
+D2D1_COLOR_F Scene::getBackgroundColor() {
+	return backgroundColor;
 }

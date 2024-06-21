@@ -102,14 +102,14 @@
     <ClCompile Include="GameScene.cpp">
       <Filter>소스 파일\Game\GameScene</Filter>
     </ClCompile>
-    <ClCompile Include="Font.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="NetworkManager.cpp">
       <Filter>소스 파일\Framework\Manager</Filter>
     </ClCompile>
     <ClCompile Include="FontManager.cpp">
       <Filter>소스 파일\Framework\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>소스 파일\Framework\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

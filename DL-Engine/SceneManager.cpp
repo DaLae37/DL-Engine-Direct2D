@@ -21,3 +21,7 @@ void SceneManager::ChangeScene(Scene* scene) {
 	SAFE_DELETE(currentScene);
 	currentScene = scene;
 }
+
+D2D_COLOR_F SceneManager::GetCurrentSceneBackgroundColor() {
+	return currentScene->GetBackgroundColor();
+}

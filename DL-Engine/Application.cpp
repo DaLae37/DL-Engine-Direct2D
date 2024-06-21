@@ -165,11 +165,9 @@ int Application::DoMainLoop(Scene* firstScene) {
 			}
 		}
 
-		D2D_MATRIX_3X2_F identity = { 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f };
-		D2D_COLOR_F backgroundColor = { 1.0f, 1.0f, 1.0f, 1.0f };
 		renderTarget->BeginDraw();
-		renderTarget->SetTransform(&identity);
-		renderTarget->Clear(&backgroundColor);
+		renderTarget->SetTransform(D2D1::IdentityMatrix());
+		renderTarget->Clear(sceneManager->GetCurrentSceneBackgroundColor());
 
 		sceneManager->Render();
 
