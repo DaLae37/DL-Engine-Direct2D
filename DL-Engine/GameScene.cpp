@@ -9,6 +9,10 @@ GameScene::~GameScene() {
 
 }
 
+void GameScene::LoadResource() {
+
+}
+
 void GameScene::Update(float dTime) {
 	Scene::Update(dTime);
 }

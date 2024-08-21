@@ -15,6 +15,7 @@ Scene::~Scene() {
 }
 
 void Scene::Render() {
+	objectList.sort(Object::compare_z_index);
 	for (auto& object : objectList) {
 		object->Render();
 	}

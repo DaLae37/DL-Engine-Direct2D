@@ -11,6 +11,8 @@ public :
 	Scene();
 	~Scene();
 
+	virtual void LoadResource() = 0;
+
 	virtual void Render();
 	virtual void Update(float dTime);
 

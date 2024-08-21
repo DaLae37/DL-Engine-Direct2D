@@ -22,6 +22,12 @@ ID2D1Bitmap* TextureManager::LoadTextureFromFile(const wchar_t* path) {
 		if (SUCCEEDED(hr)) {
 			hr = pDecoder->GetFrame(0, &pSource);
 		}
+		else {
+			std::cout << "file not found at ";
+			std::wcout.imbue(std::locale(LANGUAGE));
+			std::wcout << path << std::endl;
+			return nullptr;
+		}
 
 		if (SUCCEEDED(hr)) {
 			hr = wicFactory->CreateFormatConverter(&pConverter);

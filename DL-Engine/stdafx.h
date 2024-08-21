@@ -1,4 +1,6 @@
 #pragma once
+//프로젝트 세팅
+#define LANGUAGE "kor" // std::locale parameter
 
 //프로그램 세팅
 #define CONSOLE_ON true

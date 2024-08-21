@@ -7,6 +7,7 @@ public :
 	GameScene();
 	~GameScene();
 
+	void LoadResource();
 	void Render();
 	void Update(float dTime);
 };

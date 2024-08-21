@@ -5,20 +5,17 @@ class Object
 {
 protected:
 	Object* parent;
+	std::list<Object*> childList;
 
 	D2D_MATRIX_3X2_F mat;
+	D2D_RECT_F rect;
 	D2D_POINT_2F pos;
-
 	D2D_POINT_2F scalingCenter;
 	D2D_POINT_2F scale;
-
 	D2D_POINT_2F rotationCenter;
 	float rotation;
 
-	D2D_RECT_F rect;
-
-	std::list<Object*> childList;
-
+	int z_index;
 	std::string tag;
 
 public:
@@ -43,6 +40,7 @@ public:
 	float getRotation();
 
 	std::string getTag();
+	int get_z_index();
 
 	void setParent(Object* parent);
 	void setPos(D2D_POINT_2F pos);
@@ -51,6 +49,7 @@ public:
 	void setRotation(float rotation);
 	void setRotationCenter(D2D_POINT_2F rotationCenter);
 	void setTag(std::string tag);
+	void set_z_index(int z_index);
 
 	template<typename PX, typename PY>
 	void setPos(PX posX, PY posY) {
@@ -74,5 +73,9 @@ public:
 	void setRotationCenter(RCX rotationCenterX, RCY rotationCenterY) {
 		rotationCenter.x = rotationCenterX;
 		rotationCenter.y = rotationCenterY;
+	}
+
+	static bool compare_z_index(Object* a, Object* b) {
+		return a->z_index < b->z_index;
 	}
 };

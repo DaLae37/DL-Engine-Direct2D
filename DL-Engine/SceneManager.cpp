@@ -23,5 +23,5 @@ void SceneManager::ChangeScene(Scene* scene) {
 }
 
 D2D_COLOR_F SceneManager::GetCurrentSceneBackgroundColor() {
-	return currentScene->GetBackgroundColor();
+	return currentScene->getBackgroundColor();
 }

@@ -2,6 +2,15 @@
 #include "Object.h"
 
 Object::Object() {
+	parent = nullptr;
+
+	mat = D2D_MATRIX_3X2_F{ 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f };
+
+	rect.top = 0;
+	rect.left = 0;
+	rect.right = 0;
+	rect.bottom = 0;
+
 	pos = D2D_POINT_2F{ 0, 0 };
 
 	rotationCenter = D2D_POINT_2F{ 0, 0 };
@@ -10,16 +19,8 @@ Object::Object() {
 	rotation = 0;
 	scale = D2D_POINT_2F{ 1.0f, 1.0f };
 
-	mat = D2D_MATRIX_3X2_F{ 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f};
-
-	rect.top = 0;
-	rect.left = 0;
-	rect.right = 0;
-	rect.bottom = 0;
-
 	tag = "Object";
-
-	parent = nullptr;
+	z_index = 0;
 }
 
 Object::~Object() {
@@ -103,6 +104,10 @@ std::string Object::getTag() {
 	return this->tag;
 }
 
+int Object::get_z_index() {
+	return this->z_index;
+}
+
 void Object::setParent(Object* parent) {
 	this->parent = parent;
 }
@@ -132,4 +137,8 @@ void Object::setScalingCenter(D2D_POINT_2F scaleCenter) {
 
 void Object::setTag(std::string tag) {
 	this->tag = tag;
+}
+
+void Object::set_z_index(int z_index) {
+	this->z_index = z_index;
 }

@@ -4,12 +4,18 @@
 
 class MainScene : public Scene
 {
+private :
+	Sprite* background;
+
+	Sprite* resetButton;
+	Sprite* startButton;
+	Sprite* endButton;
+
 public :
 	MainScene();
 	~MainScene();
 
-	Sprite* icon;
-
+	void LoadResource();
 	void Render();
 	void Update(float dTime);
 };
