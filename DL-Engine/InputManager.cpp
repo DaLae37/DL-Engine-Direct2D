@@ -15,8 +15,7 @@ InputManager::~InputManager() {
 void InputManager::UpdateKeyState() {
 	for (int i = 0; i < 256; i++) {
 		beforeKey[i] = currentKey[i];
-		currentKey[i] = GetAsyncKeyState(i)
-			& 0x8000;
+		currentKey[i] = GetAsyncKeyState(i) & 0x8000;
 	}
 }
 

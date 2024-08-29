@@ -135,7 +135,7 @@ int Application::DoMainLoop(Scene* firstScene) {
 			DispatchMessage(&Message);
 		}
 
-		if (inputManager->GetKeyState('A') == KEY_DOWN) {
+		if (inputManager->GetKeyState(VK_F11) == KEY_DOWN) {
 			DWORD dwStyle = GetWindowLong(hWnd, GWL_STYLE);
 			WINDOWPLACEMENT m_wpPrev;
 			if (dwStyle & WS_OVERLAPPEDWINDOW)

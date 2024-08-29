@@ -18,7 +18,8 @@ ID2D1Bitmap* TextureManager::LoadTextureFromFile(const wchar_t* path) {
 	IWICFormatConverter* pConverter = nullptr;
 
 	if (textureMap[path] == nullptr) {
-		HRESULT hr = wicFactory->CreateDecoderFromFilename(path, nullptr, GENERIC_READ, WICDecodeMetadataCacheOnLoad, &pDecoder);
+		HRESULT hr = wicFactory->CreateDecoderFromFilename(path, nullptr,
+			GENERIC_READ, WICDecodeMetadataCacheOnLoad, &pDecoder);
 		if (SUCCEEDED(hr)) {
 			hr = pDecoder->GetFrame(0, &pSource);
 		}
@@ -34,7 +35,8 @@ ID2D1Bitmap* TextureManager::LoadTextureFromFile(const wchar_t* path) {
 		}
 
 		if (SUCCEEDED(hr)) {
-			hr = pConverter->Initialize(pSource, GUID_WICPixelFormat32bppPBGRA, WICBitmapDitherTypeNone, nullptr, 0.f, WICBitmapPaletteTypeMedianCut);
+			hr = pConverter->Initialize(pSource, GUID_WICPixelFormat32bppPBGRA,
+				WICBitmapDitherTypeNone, nullptr, 0.f, WICBitmapPaletteTypeMedianCut);
 		}
 
 		if (SUCCEEDED(hr)) {

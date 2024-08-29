@@ -32,7 +32,9 @@ Sprite::~Sprite() {
 void Sprite::Render() {
 	Object::Render();
 	if (texture != nullptr) {
-		renderTarget->SetTransform(D2D1::Matrix3x2F::Translation(pos.x, pos.y) * D2D1::Matrix3x2F::Scale(scale.x, scale.y, scalingCenter) * D2D1::Matrix3x2F::Rotation(rotation, rotationCenter));
+		renderTarget->SetTransform(D2D1::Matrix3x2F::Translation(pos.x, pos.y)
+			* D2D1::Matrix3x2F::Scale(scale.x, scale.y, scalingCenter)
+			* D2D1::Matrix3x2F::Rotation(rotation, rotationCenter));
 		renderTarget->DrawBitmap(texture, &rect, color.a, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, nullptr);
 	}
 }
