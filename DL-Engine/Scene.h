@@ -4,8 +4,8 @@
 class Scene
 {
 private :
-	std::list<Object*> objectList;
-	std::list<Object*> uiList;
+	std::vector<Object*> objects;
+	std::vector<Object*> UIs;
 	D2D_COLOR_F backgroundColor;
 public :
 	Scene();

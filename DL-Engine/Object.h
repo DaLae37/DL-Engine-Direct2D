@@ -15,6 +15,7 @@ protected:
 	D2D_POINT_2F rotationCenter;
 	float rotation;
 
+	bool isActive;
 	int z_index;
 	std::string tag;
 
@@ -39,6 +40,7 @@ public:
 	float getPosY();
 	float getRotation();
 
+	bool getIsActive();
 	std::string getTag();
 	int get_z_index();
 
@@ -48,6 +50,7 @@ public:
 	void setScalingCenter(D2D_POINT_2F scaleCenter);
 	void setRotation(float rotation);
 	void setRotationCenter(D2D_POINT_2F rotationCenter);
+	void setIsActive(bool isAcitve);
 	void setTag(std::string tag);
 	void set_z_index(int z_index);
 

@@ -19,6 +19,7 @@ Object::Object() {
 	rotation = 0;
 	scale = D2D_POINT_2F{ 1.0f, 1.0f };
 
+	isActive = true;
 	tag = "Object";
 	z_index = 0;
 }
@@ -100,6 +101,10 @@ float Object::getRotation() {
 	return rotation;
 }
 
+bool Object::getIsActive() {
+	return this->isActive;
+}
+
 std::string Object::getTag() {
 	return this->tag;
 }
@@ -133,6 +138,10 @@ void Object::setScale(D2D_POINT_2F scale) {
 void Object::setScalingCenter(D2D_POINT_2F scaleCenter) {
 	scalingCenter.x = scaleCenter.x;
 	scalingCenter.y = scaleCenter.y;
+}
+
+void Object::setIsActive(bool isActive) {
+	this->isActive = isActive;
 }
 
 void Object::setTag(std::string tag) {

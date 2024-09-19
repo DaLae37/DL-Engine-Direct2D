@@ -12,7 +12,7 @@
 
 //라이브러리
 #pragma comment (lib,"WindowsCodecs.lib")
-#pragma comment(lib, "winmm.lib")
+#pragma comment (lib,"winmm.lib")
 #pragma comment (lib,"d2d1.lib")
 #pragma comment (lib,"dwrite.lib")
 
@@ -35,6 +35,8 @@
 #include <map>
 #include <vector>
 #include <list>
+#include <set>
+#include <algorithm>
 
 //게임 매니저 헤더
 #include "TextureManager.h"

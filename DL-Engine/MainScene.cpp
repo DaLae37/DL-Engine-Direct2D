@@ -18,11 +18,13 @@ void MainScene::LoadResource() {
 	AddObject(background);
 
 	resetButton = new Sprite(L"Resources/Images/MainScene/reset1.png");
-	resetButton->setPos(100, 350);
+	resetButton->setPos(100, 400);
+	resetButton->set_z_index(2);
 	AddObject(resetButton);
 
 	startButton = new Sprite(L"Resources/Images/MainScene/start1.png");
-	startButton->setPos(100, 450);
+	startButton->setPos(100, 400);
+	startButton->set_z_index(1);
 	AddObject(startButton);
 
 	endButton = new Sprite(L"Resources/Images/MainScene/end1.png");
