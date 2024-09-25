@@ -25,7 +25,8 @@ Application::Application(HINSTANCE hInstance, INT cmdShow) {
 }
 
 Application::~Application() {
-	
+	DeleteManager();
+	ReleaseDirect2D();
 }
 
 HRESULT Application::InitDirect2D() {
@@ -46,7 +47,7 @@ HRESULT Application::CreateDeviceIndependentResources() {
 	hr = CoCreateInstance(CLSID_WICImagingFactory, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&wicFactory));
 	
 	if (SUCCEEDED(hr)) {
-		hr = D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, &factory);
+		hr = D2D1CreateFactory(D2D1_FACTORY_TYPE_MULTI_THREADED, &factory);
 	}
 	
 	return hr;
@@ -106,7 +107,7 @@ void Application::InitDeltaTime() {
 
 LRESULT CALLBACK Application::WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam) {
 	switch (iMessage) {
-	case WM_DESTROY :
+	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
 	}
@@ -123,9 +124,9 @@ HWND Application::FloatWindow(HINSTANCE hInstance, int cmdShow) {
 	return hWnd;
 }
 
-int Application::DoMainLoop(Scene* firstScene) {
+int Application::DoMainLoop(Scene* firstScene, std::string sceneName) {
 
-	sceneManager->ChangeScene(firstScene);
+	sceneManager->ChangeScene(firstScene, sceneName);
 
 	MSG Message = { 0, };
 
@@ -176,9 +177,8 @@ int Application::DoMainLoop(Scene* firstScene) {
 		inputManager->UpdateKeyState();
 		sceneManager->Update(getDeltaTime());
 	}
-	
-	DeleteManager();
-	ReleaseDirect2D();
+
+	sceneManager->WaitThreadsEnd();
 
 	return (int)Message.wParam;
 }

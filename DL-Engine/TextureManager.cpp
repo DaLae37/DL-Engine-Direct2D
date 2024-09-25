@@ -10,13 +10,13 @@ TextureManager::~TextureManager() {
 }
 
 ID2D1Bitmap* TextureManager::LoadTextureFromFile(const wchar_t* path) {
-
 	ID2D1Bitmap* texture;
 
 	IWICBitmapDecoder* pDecoder = nullptr;
 	IWICBitmapFrameDecode* pSource = nullptr;
 	IWICFormatConverter* pConverter = nullptr;
 
+	textureLoadMutex.lock();
 	if (textureMap[path] == nullptr) {
 		HRESULT hr = wicFactory->CreateDecoderFromFilename(path, nullptr,
 			GENERIC_READ, WICDecodeMetadataCacheOnLoad, &pDecoder);
@@ -47,6 +47,7 @@ ID2D1Bitmap* TextureManager::LoadTextureFromFile(const wchar_t* path) {
 			textureMap[path] = texture;
 		}
 	}
+	textureLoadMutex.unlock();
 
 	SAFE_RELEASE(pDecoder);
 	SAFE_RELEASE(pSource);

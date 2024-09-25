@@ -19,6 +19,22 @@ Animation::~Animation() {
 	}
 }
 
+void Animation::LoadResourceFromFiles() {
+	for (std::vector<const wchar_t*>::iterator path = pathVector.begin(); path != pathVector.end(); path++) {
+		spriteVector.push_back(new Sprite(*path));
+
+		AddChild(spriteVector[maxFrame]);
+
+		if (maxFrame == 0) {
+			rect = spriteVector[maxFrame]->getRect();
+			width = spriteVector[maxFrame]->getWidth();
+			height = spriteVector[maxFrame]->getHeight();
+		}
+
+		maxFrame++;
+	}
+}
+
 void Animation::Render() {
 	Object::Render();
 	if (maxFrame > 0) {
@@ -41,17 +57,7 @@ void Animation::Update(float dTime) {
 }
 
 void Animation::AddFrame(const wchar_t* path) {
-	spriteVector.push_back(new Sprite(path));
-
-	AddChild(spriteVector[maxFrame]);
-
-	if (maxFrame == 0) {
-		rect = spriteVector[maxFrame]->getRect();
-		width = spriteVector[maxFrame]->getWidth();
-		height = spriteVector[maxFrame]->getHeight();
-	}
-
-	maxFrame++;
+	pathVector.push_back(path);
 }
 
 int Animation::getWidth() {

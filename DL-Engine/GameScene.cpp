@@ -9,7 +9,7 @@ GameScene::~GameScene() {
 
 }
 
-void GameScene::LoadResource() {
+void GameScene::LoadResourceData() {
 
 }
 

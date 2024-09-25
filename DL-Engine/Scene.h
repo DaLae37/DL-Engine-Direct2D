@@ -4,14 +4,17 @@
 class Scene
 {
 private :
+	std::string sceneName;
+	bool isSceneLoaded;
 	std::vector<Object*> objects;
 	std::vector<Object*> UIs;
 	D2D_COLOR_F backgroundColor;
 public :
-	Scene();
-	~Scene();
+	Scene(std::string sceneName = "scene");
+	virtual ~Scene();
 
-	virtual void LoadResource() = 0;
+	virtual void LoadResourceData() = 0;
+	void LoadResourceFromFiles();
 
 	virtual void Render();
 	virtual void Update(float dTime);

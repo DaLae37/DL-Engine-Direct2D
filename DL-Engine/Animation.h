@@ -15,9 +15,12 @@ private :
 	float timeChecker;
 
 	std::vector<Sprite*> spriteVector;
+	std::vector<const wchar_t*> pathVector;
 public :
 	Animation(int fps);
 	~Animation();
+
+	void LoadResourceFromFiles();
 
 	void Render();
 	void Update(float dTime);

@@ -21,11 +21,13 @@ protected:
 
 public:
 	Object();
-	~Object();
+	virtual ~Object();
+
+	virtual void LoadResourceFromFiles() = 0;
 
 	virtual void Render();
 	virtual void Update(float dTime);
-
+	
 	void AddChild(Object* child);
 	void RemoveChild(Object* child);
 
@@ -34,6 +36,7 @@ public:
 
 	D2D_MATRIX_3X2_F getMat();
 	D2D_POINT_2F getPos();
+	D2D_POINT_2F getScale();
 	D2D_RECT_F getRect();
 
 	float getPosX();

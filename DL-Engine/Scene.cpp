@@ -1,8 +1,10 @@
 #include "stdafx.h"
 #include "Scene.h"
 
-Scene::Scene() {
+Scene::Scene(std::string sceneName = "scene") {
+	this->sceneName = sceneName;
 	backgroundColor = { 1.0f, 1.0f, 1.0f, 1.0f };
+	isSceneLoaded = false;
 }
 
 Scene::~Scene() {
@@ -15,28 +17,46 @@ Scene::~Scene() {
 }
 
 void Scene::Render() {
-	std::sort(objects.begin(), objects.end(), Object::compare_z_index);
-	for (auto& object : objects) {
-		if (object->getIsActive()) {
-			object->Render();
+	if (isSceneLoaded) {
+		std::sort(objects.begin(), objects.end(), Object::compare_z_index);
+		for (auto& object : objects) {
+			if (object->getIsActive()) {
+				object->Render();
+			}
 		}
-	}
 
-	for (auto& ui : UIs) {
-		ui->Render();
+		for (auto& ui : UIs) {
+			ui->Render();
+		}
 	}
 }
 
 void Scene::Update(float dTime) {
-	for (auto& object : objects) {
-		if (object->getIsActive()) {
-			object->Update(dTime);
+	if (isSceneLoaded) {
+		for (auto& object : objects) {
+			if (object->getIsActive()) {
+				object->Update(dTime);
+			}
+		}
+
+		for (auto& ui : UIs) {
+			ui->Update(dTime);
 		}
 	}
+}
 
-	for (auto& ui : UIs) {
-		ui->Update(dTime);
+void Scene::LoadResourceFromFiles() {
+	int numObjects = objects.size();
+	int numUIs = UIs.size();
+
+	for (int i = 0; i < numObjects; i++) {
+		objects[i]->LoadResourceFromFiles();
 	}
+	for (int i = 0; i < numUIs; i++) {
+		UIs[i]->LoadResourceFromFiles();
+	}
+
+	isSceneLoaded = true;
 }
 
 void Scene::AddObject(Object* object) {

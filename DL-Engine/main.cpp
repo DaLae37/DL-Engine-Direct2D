@@ -6,14 +6,14 @@
 INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR, INT cmdShow) {
 	srand(GetTickCount64());
 
-	Console console;
+	std::unique_ptr<Console> console = std::make_unique<Console>();
 	if (CONSOLE_ON) {
-		console.OpenConsole();
+		console->OpenConsole();
 	}
 	
-	Application app(hInstance, cmdShow);
+	std::unique_ptr<Application> app = std::make_unique<Application>(hInstance, cmdShow);
 
-	int msg = app.DoMainLoop(new MainScene());
+	INT msg = app->DoMainLoop(new MainScene());
 	
 	return msg;
 }

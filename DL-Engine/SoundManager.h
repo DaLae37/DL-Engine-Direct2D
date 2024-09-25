@@ -9,7 +9,7 @@ private :
 
 	float volume;
 public :
-	SoundManager();
+	explicit SoundManager();
 	~SoundManager();
 
 	void CreateDevice();

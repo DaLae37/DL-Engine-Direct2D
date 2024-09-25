@@ -4,9 +4,11 @@
 class TextureManager
 {
 private :
-	std::map<const wchar_t*, ID2D1Bitmap *> textureMap;
+	std::mutex textureLoadMutex;
+	std::vector<const wchar_t*> textures;
+	std::unordered_map<const wchar_t*, ID2D1Bitmap *> textureMap;
 public :
-	TextureManager();
+	explicit TextureManager();
 	~TextureManager();
 
 	ID2D1Bitmap* LoadTextureFromFile(const wchar_t* path);

@@ -55,6 +55,12 @@
     <Filter Include="헤더 파일\Game\GameScene">
       <UniqueIdentifier>{38d16ffc-d64f-4f7f-9f8e-852aae94109f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Framework\Scene">
+      <UniqueIdentifier>{973daca2-c6af-4ac1-95b9-ca523112dd1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Framework\Scene">
+      <UniqueIdentifier>{67bfc499-a14e-4e81-985b-20a555dbdc90}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -72,9 +78,6 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>소스 파일\Framework\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>소스 파일\Framework\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="TextureManager.cpp">
       <Filter>소스 파일\Framework\Manager</Filter>
     </ClCompile>
@@ -85,9 +88,6 @@
       <Filter>소스 파일\Framework\Object</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
-      <Filter>소스 파일\Framework\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
       <Filter>소스 파일\Framework\Object</Filter>
     </ClCompile>
     <ClCompile Include="MainScene.cpp">
@@ -111,6 +111,15 @@
     <ClCompile Include="Font.cpp">
       <Filter>소스 파일\Framework\Object</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>소스 파일\Framework\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>소스 파일\Framework\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>소스 파일\Framework\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -125,16 +134,10 @@
     <ClInclude Include="InputManager.h">
       <Filter>헤더 파일\Framework\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>헤더 파일\Framework\Manager</Filter>
-    </ClInclude>
     <ClInclude Include="TextureManager.h">
       <Filter>헤더 파일\Framework\Manager</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>헤더 파일\Framework\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
       <Filter>헤더 파일\Framework\Object</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
@@ -163,6 +166,18 @@
     </ClInclude>
     <ClInclude Include="FontManager.h">
       <Filter>헤더 파일\Framework\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>헤더 파일\Framework\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>헤더 파일\Framework\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>헤더 파일\Framework\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

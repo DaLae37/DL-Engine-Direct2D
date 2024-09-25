@@ -2,16 +2,15 @@
 #include "MainScene.h"
 #include "GameScene.h"
 
-MainScene::MainScene() {
+MainScene::MainScene(std::string sceneName){
 	setBackgroundColor(Color::black);
-	LoadResource();
 }
 
 MainScene::~MainScene() {
 
 }
 
-void MainScene::LoadResource() {
+void MainScene::LoadResourceData() {
 	soundManager->LoadAudioFromFile(L"Resources/Sounds/BackgroundSound.wav");
 
 	background = new Sprite(L"Resources/Images/MainScene/mainScene.jpg");
@@ -37,8 +36,8 @@ void MainScene::Render() {
 }
 
 void MainScene::Update(float dTime) {
-	Scene::Update(dTime);
-
+	Scene::Update(dTime);	
+	startButton->setScale(3, 3);
 	if (inputManager->GetKeyState(VK_LBUTTON) == KEY_DOWN) {
 		if (startButton->IsPointInRect(inputManager->GetMousePos())) {
 			sceneManager->ChangeScene(new GameScene());

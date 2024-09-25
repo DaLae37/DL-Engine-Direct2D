@@ -31,8 +31,17 @@
 #include <io.h>
 #include <fcntl.h>
 
+//메모리
+#include <memory>
+
+//스레드
+#include <thread>
+#include <mutex>
+#define THREAD_NUM 2
+
 //STL
 #include <map>
+#include <unordered_map>
 #include <vector>
 #include <list>
 #include <set>

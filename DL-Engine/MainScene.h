@@ -12,10 +12,10 @@ private :
 	Sprite* endButton;
 
 public :
-	MainScene();
+	MainScene(std::string sceneName);
 	~MainScene();
 
-	void LoadResource();
+	void LoadResourceData();
 	void Render();
 	void Update(float dTime);
 };

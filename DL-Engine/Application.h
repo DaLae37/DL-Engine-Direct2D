@@ -26,5 +26,5 @@ public :
 	void InitDeltaTime();
 	float getDeltaTime();
 
-	int DoMainLoop(Scene* firstScene);
+	int DoMainLoop(Scene* firstScene, std::string sceneName);
 };

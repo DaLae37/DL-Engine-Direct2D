@@ -85,6 +85,10 @@ D2D_POINT_2F Object::getPos() {
 	return pos;
 }
 
+D2D_POINT_2F Object::getScale() {
+	return scale;
+}
+
 D2D1_RECT_F Object::getRect() {
 	return rect;
 }

@@ -6,7 +6,7 @@ class InputManager
 private :
 	bool beforeKey[256], currentKey[256];
 public :
-	InputManager();
+	explicit InputManager();
 	~InputManager();
 
 	void UpdateKeyState();
