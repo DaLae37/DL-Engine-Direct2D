@@ -12,7 +12,7 @@ private :
 	Sprite* endButton;
 
 public :
-	MainScene(std::string sceneName);
+	MainScene(std::string sceneName = "scene");
 	~MainScene();
 
 	void LoadResourceData();

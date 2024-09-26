@@ -178,8 +178,6 @@ int Application::DoMainLoop(Scene* firstScene, std::string sceneName) {
 		sceneManager->Update(getDeltaTime());
 	}
 
-	sceneManager->WaitThreadsEnd();
-
 	return (int)Message.wParam;
 }
 

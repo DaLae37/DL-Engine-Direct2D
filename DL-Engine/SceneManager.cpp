@@ -17,14 +17,14 @@ void SceneManager::Update(float dTime) {
 	currentScene->Update(dTime);
 }
 
-void SceneManager::ChangeScene(Scene* scene, std::string sceneName = "scene", bool deleteBeforeScene = false) {
+void SceneManager::ChangeScene(Scene* scene, std::string sceneName, bool deleteBeforeScene) {
 	if (deleteBeforeScene) {
 		SAFE_DELETE(currentScene);
 		scenes.erase(sceneName);
 	}
 
 	scene->LoadResourceData();
-	scene->LoadResourceFromFiles();
+	std::unique_ptr<std::thread*> sceneLoad = std::make_unique<std::thread*>(new std::thread(&Scene::LoadResourceFromFiles, scene));
 	currentScene = scene;
 
 	if (scenes.find(sceneName) != scenes.end()) {
@@ -33,13 +33,6 @@ void SceneManager::ChangeScene(Scene* scene, std::string sceneName = "scene", bo
 	}
 	else {
 		scenes[sceneName] = scene;
-	}
-}
-
-void SceneManager::WaitThreadsEnd() {
-	int numThreads = loadingThreads.size();
-	for (int i = 0; i < numThreads; i++) {
-		loadingThreads[i]->join();
 	}
 }
 

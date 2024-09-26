@@ -15,7 +15,5 @@ public :
 
 	void ChangeScene(Scene* scene, std::string sceneName = "scene", bool deleteBeforeScene = false);
 
-	void WaitThreadsEnd();
-
 	D2D_COLOR_F GetCurrentSceneBackgroundColor();
 };

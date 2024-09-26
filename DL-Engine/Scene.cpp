@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Scene.h"
 
-Scene::Scene(std::string sceneName = "scene") {
+Scene::Scene(std::string sceneName) {
 	this->sceneName = sceneName;
 	backgroundColor = { 1.0f, 1.0f, 1.0f, 1.0f };
 	isSceneLoaded = false;

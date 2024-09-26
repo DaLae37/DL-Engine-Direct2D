@@ -2,7 +2,7 @@
 #include "MainScene.h"
 #include "GameScene.h"
 
-MainScene::MainScene(std::string sceneName){
+MainScene::MainScene(std::string sceneName) : Scene(sceneName) {
 	setBackgroundColor(Color::black);
 }
 
